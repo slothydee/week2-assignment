@@ -19,11 +19,16 @@ class Author extends Component {
                 <tbody>
                     <tr>
                         <td className="column">
-                        <a href={this.props.author.image}><img alt={this.props.author.name} src={this.props.author.image}></img></a>
+                        <a href={this.props.author.image}><img alt={this.props.author.name} src={this.props.author.image} ></img></a>
                         </td>
                         <td className="column">
                             {this.props.author.name}
+                        </td>
+                        <td className="column">
                             {this.props.postedDate}
+                        </td>
+                        <td className="column">
+                            {this.props.minutesToRead} min read
                         </td>
                     </tr>
                 </tbody>

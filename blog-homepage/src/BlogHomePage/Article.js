@@ -32,7 +32,7 @@ class Article extends Component {
                             <td>
                                 <h1>{this.props.article.title}</h1>
                                 {this.props.article.description}
-                                <Author author={this.props.article.author}> </Author>
+                                <Author author={this.props.article.author} postedDate={this.props.article.postedDate} minutesToRead={this.props.article.minutesToRead}> </Author>
                             </td>
                         </tr>
                     </tbody>
@@ -46,7 +46,7 @@ class Article extends Component {
                 <div>
                 <h1>{this.props.article.title}</h1>
                 {this.props.article.description}
-                <Author author={this.props.article.author}> </Author>
+                <Author author={this.props.article.author} postedDate={this.props.article.postedDate} minutesToRead={this.props.article.minutesToRead}> </Author>
                 </div>
                 </>
                 )
