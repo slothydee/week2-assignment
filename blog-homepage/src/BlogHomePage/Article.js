@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Author from './Author'
+import './BlogHomePage.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 class Article extends Component {
     static propTypes = {
@@ -11,6 +14,8 @@ class Article extends Component {
             link: PropTypes.string,
             postedDate: PropTypes.string,
             minutesToRead: PropTypes.number,
+            hasAudioAvailable: PropTypes.bool,
+            memberPreview:PropTypes.bool,
             author:PropTypes.shape({
                 name: PropTypes.string,
                 image: PropTypes.string,
@@ -23,35 +28,67 @@ class Article extends Component {
     render() {
         if (this.props.articleType === 'forYou') {
             return (
-                <table> 
-                    <tbody>
-                        <tr>
-                            <td>
-                                <a href={this.props.article.link}><img alt={this.props.article.title} src={this.props.article.image}></img></a>
-                            </td>
-                            <td>
-                                <h1>{this.props.article.title}</h1>
-                                {this.props.article.description}
-                                <Author author={this.props.article.author} postedDate={this.props.article.postedDate} minutesToRead={this.props.article.minutesToRead}> </Author>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className="article-tile-for-you">
+                    <div className = 'image' >
+                        <img alt={this.props.article.title} src={this.props.article.image} width="400" heigh="100"></img>
+                    </div>
+                    <div >
+                        {this._renderIfAudioAvailable()}
+                        <h1>{this.props.article.title}</h1>
+                        <body>{this.props.article.description}</body>
+                        <Author author={this.props.article.author} postedDate={this.props.article.postedDate} minutesToRead={this.props.article.minutesToRead}> </Author>
+                    </div>
+                </div>
                 )
         }
         if (this.props.articleType === 'inCaseMissed') {
             return (
-                <> 
-                <a href={this.props.article.link}><img alt={this.props.article.title} src={this.props.article.image}></img></a>
-                <div>
+            <div className="article-tile-missed">
+                <div className = 'image'>
+                    <img alt={this.props.article.title} src={this.props.article.image} width="400" heigh="100"></img>
+                </div>
+                <div className='article-child'>
+                {this._renderIfMemberPreview()}
                 <h1>{this.props.article.title}</h1>
-                {this.props.article.description}
+                <body>{this.props.article.description}</body>
                 <Author author={this.props.article.author} postedDate={this.props.article.postedDate} minutesToRead={this.props.article.minutesToRead}> </Author>
                 </div>
-                </>
+            </div>
                 )
         }
 
+    }
+    _renderIfAudioAvailable = () => {
+        if (this.props.article.hasAudioAvailable) {
+            return (
+                <div className="star">
+                    <div className="article-child">
+                    <body>
+                    audio available
+                    </body>
+                    </div>
+                    <div className="article-child">
+                <FontAwesomeIcon icon={faStar} />
+                    </div>
+                </div>
+            )
+        }
+    }
+    _renderIfMemberPreview = () => {
+        if (this.props.article.memberPreview) {
+            return (
+                <div className="star">
+                    <div className="article-child">
+                <FontAwesomeIcon icon={faStar} />
+                    </div>
+                    <div className="article-child">
+                    <body>
+                    Member preview
+                    </body>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 

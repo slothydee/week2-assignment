@@ -8,43 +8,28 @@ class BlogHomePage extends Component {
     render() {
         const articlesForYou = yourArticles.map((yourArticle, idx) => {
             return (
+                <div className='article-child'>
                 < Article article={yourArticle} articleType={'forYou'}/>
+                </div>
             )
         })
         const articleInCaseMissed = articlesMissed.map((missedArticle, idx) => {
             return (
+                <div className='article-child'>
                 < Article article={missedArticle} articleType={'inCaseMissed'}/>
+                </div>
             )
         })
         return (
-            <div className="BlogHomepage">
+            <div>
                 <h1>For you</h1>
-                <table> 
-                <tr>
-                <td className="column">
-                <div>{articlesForYou[0]}</div>
-                <div>{articlesForYou[2]}</div>
-                </td>
-                <td className="column">
-                <div>{articlesForYou[1]}</div>
-                <div>{articlesForYou[3]}</div>
-                </td>
-                </tr>
-                </table>
-                <h2>In case you missed it</h2>
-                <table>
-                    <tr>
-                    <td className="column"> 
-                    <div>{articleInCaseMissed[0]}</div>
-                    </td>
-                    <td className="column"> 
-                    <div>{articleInCaseMissed[1]}</div>
-                    </td>
-                    <td className="column"> 
-                    <div>{articleInCaseMissed[2]}</div>
-                    </td>
-                    </tr>
-                </table>
+                <div className="article-gallery">
+                    {articlesForYou}
+                </div>
+                <h1>In case you missed it</h1>
+                <div className="article-gallery">
+                    {articleInCaseMissed}
+                </div>
             </div>
         )
     }

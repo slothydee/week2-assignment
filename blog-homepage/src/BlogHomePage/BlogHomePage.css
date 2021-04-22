@@ -1,0 +1,38 @@
+.article-tile-for-you{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch
+  }
+  .article-tile-missed{
+    display: flex;
+    flex-direction: column;
+  }
+  .author{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch
+  }
+  .star{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch
+  }
+  .article-summary{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch
+  }
+.image {
+    background-size: 10px 60px;
+    background-repeat: no-repeat;
+    flex: 4
+  }
+.article-child {
+  flex: 4
+}
+.article-gallery{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
